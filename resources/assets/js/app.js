@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-
 window.Vue = require('vue');
 
 /**
@@ -25,6 +24,11 @@ const app = new Vue({
     created(){
         axios.get('/notification/get').then(response =>{
             this.notifications = response.data
+        });
+
+        userID = $('meta[name="userID"]').attr('content');
+        Echo.private('App.User.'+userID).notification((notification) =>{
+            this.notifications.push(notification);
         });
     }
 });

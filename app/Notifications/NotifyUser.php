@@ -21,7 +21,7 @@ class NotifyUser extends Notification
  
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','broadcast'];
     }
 
   
@@ -29,6 +29,15 @@ class NotifyUser extends Notification
     {
         return[
             'message' => $this->message,
+        ]; 
+    }
+
+    public function toBroadcast($notifiable)
+    {
+        return[
+            'data' => [
+                'message' => $this->message,
+            ]
         ]; 
     }
 

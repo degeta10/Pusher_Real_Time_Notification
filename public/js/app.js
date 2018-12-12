@@ -13934,7 +13934,6 @@ module.exports = __webpack_require__(45);
  */
 
 __webpack_require__(13);
-
 window.Vue = __webpack_require__(38);
 
 /**
@@ -13955,6 +13954,11 @@ var app = new Vue({
 
         axios.get('/notification/get').then(function (response) {
             _this.notifications = response.data;
+        });
+
+        userID = $('meta[name="userID"]').attr('content');
+        Echo.private('App.User.' + userID).notification(function (notification) {
+            _this.notifications.push(notification);
         });
     }
 });
