@@ -22,5 +22,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/index', 'HomeController@index')->name('home');
+    Route::get('/notify', 'NotificationController@index')->name('notify');
 });
 
